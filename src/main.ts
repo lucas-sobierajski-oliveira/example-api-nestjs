@@ -5,7 +5,7 @@ import { EntityNotFoundExceptionFilter } from './exception-filters/entity-not-fo
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.useGlobalFilters(new EntityNotFoundExceptionFilter())
+  // app.useGlobalFilters(new EntityNotFoundExceptionFilter())
   const options = new DocumentBuilder()
     .setTitle('Nest.js API FullCycle')
     .setDescription('Documentação da API do Nest.js')

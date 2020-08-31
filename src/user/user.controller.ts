@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param, Put, Delete, HttpCode } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Put, Delete, HttpCode, ValidationPipe } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { User } from 'src/models/user.model';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -33,7 +33,7 @@ export class UserController {
     type: UserResponse
   })
   @Post('/')
-  async store(@Body() body: UserDto): Promise<User> {
+  async store(@Body(new ValidationPipe) body: UserDto): Promise<User> {
     const user = this.userRepo.create(body);
     await this.userRepo.save(user);
     return user;
